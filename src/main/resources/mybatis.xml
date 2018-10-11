@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <properties resource="mybatis-config.properties"/>
+
+
+    <context id="auto-gen" targetRuntime="MyBatis3">
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin" />
+
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <!-- jdbc连接信息 -->
+        <jdbcConnection driverClass="${jdbc_driver}"
+                        connectionURL="${jdbc_url}"
+                        userId="${jdbc_user}"
+                        password="${jdbc_password}">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- 生成vo对象(dto & example) -->
+        <javaModelGenerator targetPackage="com.dulei.goods.dao"
+                            targetProject="/Users/dulei/Documents/work/ideaworkspace/mybatis-gen/src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+            <!--<property name="rootClass" value="com.aotugenen.fashionAvenue.base.BaseEntity"/>-->
+        </javaModelGenerator>
+        <!-- 用于定义SQL映射生成器的属性。(xml) -->
+        <sqlMapGenerator targetPackage="com.dulei.goods.mapper"
+                         targetProject="/Users/dulei/Documents/work/ideaworkspace/mybatis-gen/src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        <!-- 生成DAO的类文件以及配置文件 ANNOTATEDMAPPER XMLMAPPER-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.dulei.goods.mapper"
+                             targetProject="/Users/dulei/Documents/work/ideaworkspace/mybatis-gen/src/main/java">
+                <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <table tableName="brand" domainObjectName="BrandEntity" enableDeleteByPrimaryKey="true"
+               enableDeleteByExample="true">
+            <property name="useActualColumnNames" value="false"/>
+            <!--<columnOverride column="status" javaType="com.aotugenen.fashionAvenue.enums.Status" />-->
+        </table>
+    </context>
+
+
+
+</generatorConfiguration>

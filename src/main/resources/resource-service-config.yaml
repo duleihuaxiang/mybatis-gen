@@ -1,0 +1,8 @@
+target: /Users/dulei/Documents/work/ideaworkspace/mybatis-gen/src/main/java/
+items:
+  -
+    pkg: com.dulei.goods
+    domain: Brand
+    primaryKeyField: brandId
+    uriPath: /brand
+    dao: com.dulei.goods
