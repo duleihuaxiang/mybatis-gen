@@ -46,6 +46,8 @@ public class BrandServiceImpl extends BaseServiceImpl implements BrandService {
 		entity.setUpdateTime(new Date());
 
 		this.brandEntityMapper.insertSelective(entity);
+		obj = this.getById(entity.getBrandId());
+
 		obj.setBrandId(entity.getBrandId());
 
 		logger.info("Created Brand: {}", obj);

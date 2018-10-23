@@ -45,6 +45,8 @@
         <table tableName="brand" domainObjectName="BrandEntity" enableDeleteByPrimaryKey="true"
                enableDeleteByExample="true">
             <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="brand_id" sqlStatement="MySql" identity="true"/>
+
             <!--<columnOverride column="status" javaType="com.aotugenen.fashionAvenue.enums.Status" />-->
         </table>
     </context>

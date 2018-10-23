@@ -117,27 +117,30 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.dulei.goods.dao.BrandEntity">
-    insert into brand (brand_id, code, name, 
-      name_en, description, icon, 
-      keywords, parent_id, extras, 
-      brand_status, display_order, version, 
-      create_user_id, create_user_name, create_time, 
-      update_user_id, update_user_name, update_time, 
-      last_update, deleted)
-    values (#{brandId,jdbcType=BIGINT}, #{code,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
-      #{nameEn,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{icon,jdbcType=VARCHAR}, 
-      #{keywords,jdbcType=VARCHAR}, #{parentId,jdbcType=BIGINT}, #{extras,jdbcType=VARCHAR}, 
-      #{brandStatus,jdbcType=VARCHAR}, #{displayOrder,jdbcType=INTEGER}, #{version,jdbcType=INTEGER}, 
-      #{createUserId,jdbcType=BIGINT}, #{createUserName,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{updateUserId,jdbcType=BIGINT}, #{updateUserName,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, 
-      #{lastUpdate,jdbcType=TIMESTAMP}, #{deleted,jdbcType=INTEGER})
+    <selectKey keyProperty="brandId" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into brand (code, name, name_en, 
+      description, icon, keywords, 
+      parent_id, extras, brand_status, 
+      display_order, version, create_user_id, 
+      create_user_name, create_time, update_user_id, 
+      update_user_name, update_time, last_update, 
+      deleted)
+    values (#{code,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{nameEn,jdbcType=VARCHAR}, 
+      #{description,jdbcType=VARCHAR}, #{icon,jdbcType=VARCHAR}, #{keywords,jdbcType=VARCHAR}, 
+      #{parentId,jdbcType=BIGINT}, #{extras,jdbcType=VARCHAR}, #{brandStatus,jdbcType=VARCHAR}, 
+      #{displayOrder,jdbcType=INTEGER}, #{version,jdbcType=INTEGER}, #{createUserId,jdbcType=BIGINT}, 
+      #{createUserName,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateUserId,jdbcType=BIGINT}, 
+      #{updateUserName,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{lastUpdate,jdbcType=TIMESTAMP}, 
+      #{deleted,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.dulei.goods.dao.BrandEntity">
+    <selectKey keyProperty="brandId" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
     insert into brand
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="brandId != null">
-        brand_id,
-      </if>
       <if test="code != null">
         code,
       </if>
@@ -197,9 +200,6 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="brandId != null">
-        #{brandId,jdbcType=BIGINT},
-      </if>
       <if test="code != null">
         #{code,jdbcType=VARCHAR},
       </if>

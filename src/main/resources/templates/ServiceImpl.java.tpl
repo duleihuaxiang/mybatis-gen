@@ -46,7 +46,9 @@ public class #domain.className#ServiceImpl extends BaseServiceImpl implements #d
 		entity.setUpdateTime(new Date());
 
 		this.#domain.objName#EntityMapper.insertSelective(entity);
-		obj.#primaryKeyField.setMethod#(entity.#primaryKeyField.getMethod#());
+		obj = this.getById(entity.get#domain.className#Id());
+
+		//obj.#primaryKeyField.setMethod#(entity.#primaryKeyField.getMethod#());
 
 		logger.info("Created #domain.className#: {}", obj);
 
