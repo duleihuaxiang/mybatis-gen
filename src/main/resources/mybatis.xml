@@ -5,7 +5,7 @@
     <properties resource="mybatis-config.properties"/>
 
 
-    <context id="auto-gen" targetRuntime="MyBatis3">
+    <context id="m_template" targetRuntime="MyBatis3">
         <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
         <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin" />
 
@@ -25,29 +25,118 @@
         </javaTypeResolver>
 
         <!-- 生成vo对象(dto & example) -->
-        <javaModelGenerator targetPackage="com.dulei.goods.dao"
-                            targetProject="/Users/dulei/Documents/work/ideaworkspace/mybatis-gen/src/main/java">
+        <javaModelGenerator targetPackage="com.redstar.template.dao"
+                            targetProject="/Users/du.lei/Documents/work/1-代码/workspace/mybatis-gen/src/main/java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
             <!--<property name="rootClass" value="com.aotugenen.fashionAvenue.base.BaseEntity"/>-->
         </javaModelGenerator>
         <!-- 用于定义SQL映射生成器的属性。(xml) -->
-        <sqlMapGenerator targetPackage="com.dulei.goods.mapper"
-                         targetProject="/Users/dulei/Documents/work/ideaworkspace/mybatis-gen/src/main/resources">
+        <sqlMapGenerator targetPackage="com.redstar.template.mapper"
+                         targetProject="/Users/du.lei/Documents/work/1-代码/workspace/mybatis-gen/src/main/resources">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
         <!-- 生成DAO的类文件以及配置文件 ANNOTATEDMAPPER XMLMAPPER-->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.dulei.goods.mapper"
-                             targetProject="/Users/dulei/Documents/work/ideaworkspace/mybatis-gen/src/main/java">
-                <property name="enableSubPackages" value="true"/>
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.redstar.template.mapper"
+                             targetProject="/Users/du.lei/Documents/work/1-代码/workspace/mybatis-gen/src/main/java">
+            <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
-        <table tableName="brand" domainObjectName="BrandEntity" enableDeleteByPrimaryKey="true"
+        <table tableName="m_template" domainObjectName="TemplateEntity" enableDeleteByPrimaryKey="true"
                enableDeleteByExample="true">
             <property name="useActualColumnNames" value="false"/>
-            <generatedKey column="brand_id" sqlStatement="MySql" identity="true"/>
+            <generatedKey column="template_id" sqlStatement="MySql" identity="true"/>
 
-            <!--<columnOverride column="status" javaType="com.aotugenen.fashionAvenue.enums.Status" />-->
+        </table>
+    </context>
+
+    <context id="m_template_property" targetRuntime="MyBatis3">
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin" />
+
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <!-- jdbc连接信息 -->
+        <jdbcConnection driverClass="${jdbc_driver}"
+                        connectionURL="${jdbc_url}"
+                        userId="${jdbc_user}"
+                        password="${jdbc_password}">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- 生成vo对象(dto & example) -->
+        <javaModelGenerator targetPackage="com.redstar.templateproperty.dao"
+                            targetProject="/Users/du.lei/Documents/work/1-代码/workspace/mybatis-gen/src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+            <!--<property name="rootClass" value="com.aotugenen.fashionAvenue.base.BaseEntity"/>-->
+        </javaModelGenerator>
+        <!-- 用于定义SQL映射生成器的属性。(xml) -->
+        <sqlMapGenerator targetPackage="com.redstar.templateproperty.mapper"
+                         targetProject="/Users/du.lei/Documents/work/1-代码/workspace/mybatis-gen/src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        <!-- 生成DAO的类文件以及配置文件 ANNOTATEDMAPPER XMLMAPPER-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.redstar.templateproperty.mapper"
+                             targetProject="/Users/du.lei/Documents/work/1-代码/workspace/mybatis-gen/src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <table tableName="m_template_property" domainObjectName="TemplatePropertyEntity" enableDeleteByPrimaryKey="true"
+               enableDeleteByExample="true">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="template_property_id" sqlStatement="MySql" identity="true"/>
+
+        </table>
+    </context>
+
+    <context id="user" targetRuntime="MyBatis3">
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin" />
+
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <!-- jdbc连接信息 -->
+        <jdbcConnection driverClass="${jdbc_driver}"
+                        connectionURL="${jdbc_url}"
+                        userId="${jdbc_user}"
+                        password="${jdbc_password}">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- 生成vo对象(dto & example) -->
+        <javaModelGenerator targetPackage="com.redstar.user.dao"
+                            targetProject="/Users/du.lei/Documents/work/1-代码/workspace/mybatis-gen/src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+            <!--<property name="rootClass" value="com.aotugenen.fashionAvenue.base.BaseEntity"/>-->
+        </javaModelGenerator>
+        <!-- 用于定义SQL映射生成器的属性。(xml) -->
+        <sqlMapGenerator targetPackage="com.redstar.user.mapper"
+                         targetProject="/Users/du.lei/Documents/work/1-代码/workspace/mybatis-gen/src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        <!-- 生成DAO的类文件以及配置文件 ANNOTATEDMAPPER XMLMAPPER-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.redstar.user.mapper"
+                             targetProject="/Users/du.lei/Documents/work/1-代码/workspace/mybatis-gen/src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <table tableName="m_user" domainObjectName="UserEntity" enableDeleteByPrimaryKey="true"
+               enableDeleteByExample="true">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="user_id" sqlStatement="MySql" identity="true"/>
+
         </table>
     </context>
 

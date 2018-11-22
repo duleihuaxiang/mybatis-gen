@@ -1,0 +1,62 @@
+CREATE TABLE `brand` (
+  `brand_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '品牌ID',
+  `code` varchar(200) DEFAULT NULL COMMENT '品牌code (一般为简写的品牌名)',
+  `name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `name_en` varchar(200) DEFAULT NULL COMMENT '品牌英文名',
+  `description` varchar(500) DEFAULT NULL COMMENT 'brand description',
+  `icon` varchar(500) DEFAULT NULL COMMENT '品牌图标',
+  `keywords` varchar(1000) DEFAULT NULL COMMENT '关键字, 优化搜索项.\n请用; 分割',
+  `parent_id` bigint(20) DEFAULT '0' COMMENT '品牌上级, 默认为0',
+  `extras` varchar(3000) DEFAULT NULL COMMENT '扩展元数据字段, 不限定字段协议格式, 可以采用json, xml 等格式保存',
+  `brand_status` varchar(50) DEFAULT NULL COMMENT '品牌状态(）',
+  `display_order` int(11) DEFAULT NULL COMMENT '列表显示顺序',
+  `version` int(11) DEFAULT '1' COMMENT '版本',
+  `create_user_id` bigint(20) DEFAULT '0' COMMENT '创建人Id',
+  `create_user_name` varchar(50) DEFAULT NULL COMMENT '创建人姓名',
+  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `update_user_id` bigint(20) DEFAULT '0' COMMENT '修改人',
+  `update_user_name` varchar(50) DEFAULT NULL COMMENT '修改人姓名',
+  `update_time` datetime DEFAULT NULL COMMENT '修改时间',
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `deleted` int(1) DEFAULT '0' COMMENT '0:正常,1:删除(默认0)',
+  PRIMARY KEY (`brand_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=430 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `m_template` (
+  `template_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '模板ID',
+  `template_name` varchar(100) DEFAULT NULL COMMENT '模板名称',
+  `template_type` varchar(100) DEFAULT NULL COMMENT '模板类型:brand,category',
+  `template_type_name` varchar(100) DEFAULT NULL COMMENT '模板类型名称:品牌,分类',
+  `remark` varchar(3000) DEFAULT NULL COMMENT '备注',
+  `display_order` int(11) DEFAULT NULL COMMENT '列表显示顺序',
+  `version` int(11) DEFAULT '1' COMMENT '版本',
+  `create_user_id` bigint(20) DEFAULT '0' COMMENT '创建人Id',
+  `create_user_name` varchar(50) DEFAULT NULL COMMENT '创建人姓名',
+  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `update_user_id` bigint(20) DEFAULT '0' COMMENT '修改人',
+  `update_user_name` varchar(50) DEFAULT NULL COMMENT '修改人姓名',
+  `update_time` datetime DEFAULT NULL COMMENT '修改时间',
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `deleted` int(1) DEFAULT '0' COMMENT '0:正常,1:删除(默认0)',
+  PRIMARY KEY (`template_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `m_template_property` (
+  `template_property_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '属性ID',
+  `template_property_code` varchar(100) DEFAULT NULL COMMENT '属性英文字段编码',
+  `template_property_name` varchar(100) DEFAULT NULL COMMENT '属性英文字段名称',
+  `template_property_value` varchar(100) DEFAULT NULL COMMENT '属性英文字段值',
+  `template_id` bigint(20) NOT NULL COMMENT '模板ID',
+  `remark` varchar(3000) DEFAULT NULL COMMENT '备注',
+  `display_order` int(11) DEFAULT NULL COMMENT '列表显示顺序',
+  `version` int(11) DEFAULT '1' COMMENT '版本',
+  `create_user_id` bigint(20) DEFAULT '0' COMMENT '创建人Id',
+  `create_user_name` varchar(50) DEFAULT NULL COMMENT '创建人姓名',
+  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `update_user_id` bigint(20) DEFAULT '0' COMMENT '修改人',
+  `update_user_name` varchar(50) DEFAULT NULL COMMENT '修改人姓名',
+  `update_time` datetime DEFAULT NULL COMMENT '修改时间',
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `deleted` int(1) DEFAULT '0' COMMENT '0:正常,1:删除(默认0)',
+  PRIMARY KEY (`template_property_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
