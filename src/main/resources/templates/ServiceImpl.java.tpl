@@ -81,7 +81,7 @@ public class #domain.className#ServiceImpl extends BaseServiceImpl implements #d
 	}
 
 	@Override
-    public List<#domain.className#> findByQuery(#domain.className#Query query) {
+    public List<#domain.className#> findByQuery(#domain.className#Query query, #domain.className# #domain.objName#) {
         #domain.className#EntityExample example = new #domain.className#EntityExample();
         #domain.className#EntityExample.Criteria criteria = example.createCriteria();
         //criteria.andStatusEqualTo(Status.NORMAL);
@@ -93,7 +93,7 @@ public class #domain.className#ServiceImpl extends BaseServiceImpl implements #d
     }
 
 	@Override
-	public Page<#domain.className#> find(#domain.className#Query query) {
+	public Page<#domain.className#> findWithPage(#domain.className#Query query,#domain.className# #domain.objName#) {
 		Page<#domain.className#> page = new Page<#domain.className#>(query);
 		#domain.className#EntityExample example = new #domain.className#EntityExample();
 		#domain.className#EntityExample.Criteria criteria = example.createCriteria();

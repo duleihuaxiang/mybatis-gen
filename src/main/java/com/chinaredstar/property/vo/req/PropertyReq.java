@@ -1,18 +1,18 @@
-package #package.voReq#;
+package com.chinaredstar.property.vo.req;
 
 
 import java.io.Serializable;
-import #package.dao#.dao.#domain.className#Entity;
+import com.chinaredstar.property.dao.PropertyEntity;
 
 /**
- * #domain.className# 请求参数模板
+ * Property 请求参数模板
  *
  * =========================================
  * <p>
  * Contributors :
  * Mybatis auto generator
  */
-public class #domain.className#Req extends #domain.className#Entity implements Serializable {
+public class PropertyReq extends PropertyEntity implements Serializable {
 
      private Integer offset = 0;
      private Integer limit = 16;

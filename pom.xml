@@ -3,8 +3,8 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.sudao.cloud.module</groupId>
-	<artifactId>general</artifactId>
+	<groupId>com.dudu.autogen</groupId>
+	<artifactId>com-autogen</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
@@ -17,12 +17,12 @@
 		<version>1.5.3.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<repositories>
-		<repository>
-			<id>sudao-nexus-repository</id>
-			<url>http://nexus.sudaotech.com/repository/maven-public/</url>
-		</repository>
-	</repositories>
+	<!--<repositories>-->
+		<!--<repository>-->
+			<!--<id>sudao-nexus-repository</id>-->
+			<!--<url>http://nexus.sudaotech.com/repository/maven-public/</url>-->
+		<!--</repository>-->
+	<!--</repositories>-->
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -42,7 +42,12 @@
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>8.0.13</version>
+		</dependency>
 
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>9.3-1102-jdbc41</version>
 		</dependency>
 
 		<dependency>

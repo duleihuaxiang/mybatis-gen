@@ -16,9 +16,9 @@ public interface #domain.className#Service extends BaseService {
 
     Long save(#domain.className# obj);
 
-    List<#domain.className#> findByQuery(#domain.className#Query query);
+    List<#domain.className#> findByQuery(#domain.className#Query query,#domain.className# #domain.objName#);
 
-    Page<#domain.className#> find(#domain.className#Query query);
+    Page<#domain.className#> findWithPage(#domain.className#Query query,#domain.className# #domain.objName#);
     
     class #domain.className#Query extends Pagination {
     }

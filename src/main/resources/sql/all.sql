@@ -39,7 +39,7 @@ CREATE TABLE `m_template` (
   `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `deleted` int(1) DEFAULT '0' COMMENT '0:正常,1:删除(默认0)',
   PRIMARY KEY (`template_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 CREATE TABLE `m_template_property` (
   `template_property_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '属性ID',

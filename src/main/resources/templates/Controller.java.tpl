@@ -28,11 +28,11 @@ public class #domain.className#Controller extends BaseController {
     
     @PostMapping("")
      @Transactional(rollbackFor = Exception.class)
-    public Map<String, Object> create(@RequestBody final #domain.className#Req brand) {
+    public Map<String, Object> create(@RequestBody final #domain.className#Req #domain.objName#Req) {
         // create
         // obj.setOperator(getSession().getUserId());
         #domain.className# obj =  new #domain.className#();
-        BeanUtils.copyProperties(brand,obj);
+        BeanUtils.copyProperties(#domain.objName#Req,obj);
         Long id = #domain.objName#Service.create(obj);
 
         return resultMap(ResultCode.OK, "#primaryKeyField#", id);
@@ -40,10 +40,10 @@ public class #domain.className#Controller extends BaseController {
 
     @PutMapping("/{id}")
      @Transactional(rollbackFor = Exception.class)
-    public Map<String, Object> update(@PathVariable("id") final Long id, @RequestBody #domain.className#Req brand) {
+    public Map<String, Object> update(@PathVariable("id") final Long id, @RequestBody #domain.className#Req #domain.objName#Req) {
         // obj.setOperator(getSession().getUserId());
         #domain.className# obj =  new #domain.className#();
-        BeanUtils.copyProperties(brand,obj);
+        BeanUtils.copyProperties(#domain.objName#Req,obj);
         obj.set#domain.className#Id(id);
         #domain.objName#Service.update(obj);
 
@@ -69,17 +69,36 @@ public class #domain.className#Controller extends BaseController {
     }
 
     @GetMapping("")
-    public Result<Page<#domain.className#>> find(
+    public Result<Page<#domain.className#>> findByQueryWithPage(
         @RequestParam(value = "offset", required = false) Integer offset,
         @RequestParam(value = "limit", required = false) Integer limit,
         @RequestParam(value = "page", required = false) Integer pageNum
     ) {
+        //-- 设置分页条件
         #domain.className#Query query = new #domain.className#Query();
     	query.setOffset(offset);
     	query.setLimit(limit);
     	query.setPage(pageNum);
+        //-- 设置查询条件
+    	#domain.className# #domain.objName# = new #domain.className#();
+    	Page<#domain.className#> page = #domain.objName#Service.findWithPage(query,#domain.objName#);
+        return new Result<Page<#domain.className#>>(ResultCode.OK, page);
+    }
 
-    	Page<#domain.className#> page = #domain.objName#Service.find(query);
+
+    @PostMapping("/list")
+    public Result<Page<#domain.className#>> find(
+       @RequestBody final #domain.className#Req #domain.objName#Req
+    ) {
+        //-- 设置分页条件 在 #domain.objName#Req 增加属性offset,limit,pageNum
+        #domain.className#Query query = new #domain.className#Query();
+    	query.setOffset(#domain.objName#Req.getOffset());
+    	query.setLimit(#domain.objName#Req.getLimit());
+    	query.setPage(#domain.objName#Req.getPageNum());
+    	//-- 设置查询条件
+    	#domain.className# #domain.objName# = new #domain.className#();
+
+    	Page<#domain.className#> page = #domain.objName#Service.findWithPage(query,#domain.objName#);
         return new Result<Page<#domain.className#>>(ResultCode.OK, page);
     }
 

@@ -1,20 +1,8 @@
 target: /Users/du.lei/Documents/work/1-代码/workspace/mybatis-gen/src/main/java/
 items:
   -
-    pkg: com.redstar.template
-    domain: Template
-    primaryKeyField: templateId
-    uriPath: /template
-    dao: com.redstar.template
-  -
-    pkg: com.redstar.templateproperty
-    domain: TemplateProperty
-    primaryKeyField: templatePropertyId
-    uriPath: /templateProperty
-    dao: com.redstar.templateproperty
-  -
-    pkg: com.redstar.user
-    domain: User
-    primaryKeyField: userId
-    uriPath: /user
-    dao: com.redstar.user
+    pkg: com.chinaredstar.property
+    domain: Property
+    primaryKeyField: propertyId
+    uriPath: /property
+    dao: com.chinaredstar.property
