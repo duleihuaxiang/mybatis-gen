@@ -1,7 +1,6 @@
 package #package.web#;
 
-import java.util.List;
-import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -16,8 +15,8 @@ import #package.dao#.vo.req.#domain.className#Req;
 import #package.service#.#domain.className#Service;
 import #package.service#.#domain.className#Service.#domain.className#;
 import #package.service#.#domain.className#Service.#domain.className#Query;
-import java.util.HashMap;
-
+import io.swagger.annotations.ApiOperation;
+import java.util.Map;
 
 @RestController
 @RequestMapping("#uriPath#")
@@ -25,7 +24,8 @@ public class #domain.className#Controller extends BaseController {
 
     @Autowired
     private #domain.className#Service #domain.objName#Service;
-    
+
+    @ApiOperation(value = "新增记录", notes = "新增记录，返回主键")
     @PostMapping("")
      @Transactional(rollbackFor = Exception.class)
     public Map<String, Object> create(@RequestBody final #domain.className#Req #domain.objName#Req) {
@@ -38,6 +38,7 @@ public class #domain.className#Controller extends BaseController {
         return resultMap(ResultCode.OK, "#primaryKeyField#", id);
     }
 
+    @ApiOperation(value = "修改单条记录", notes = "根据主键修改")
     @PutMapping("/{id}")
      @Transactional(rollbackFor = Exception.class)
     public Map<String, Object> update(@PathVariable("id") final Long id, @RequestBody #domain.className#Req #domain.objName#Req) {
@@ -50,24 +51,25 @@ public class #domain.className#Controller extends BaseController {
         return resultMap(ResultCode.OK);
     }
 
+    @ApiOperation(value = "删除单条记录", notes = "根据主键删除")
     @DeleteMapping("/{id}")
      @Transactional(rollbackFor = Exception.class)
     public Map<String, Object> delete(@PathVariable("id") final Long id) {
         #domain.className#Req obj = new #domain.className#Req();
         // obj.setOperator(getSession().getUserId());
-        // obj.setStatus(Status.DELETED);
+        obj.setDeleted(1);
         update(id, obj);
 
         return resultMap(ResultCode.OK);
     }
 
-
+    @ApiOperation(value = "get查询单条记录", notes = "根据主键查询")
     @GetMapping("/{id}")
     public #domain.className# get(@PathVariable("id") final Long id) {
         #domain.className# obj = #domain.objName#Service.getById(id);
         return obj;
     }
-
+    @ApiOperation(value = "get分页查询", notes = "支持分页条件和业务条件")
     @GetMapping("")
     public Result<Page<#domain.className#>> findByQueryWithPage(
         @RequestParam(value = "offset", required = false) Integer offset,
@@ -85,9 +87,9 @@ public class #domain.className#Controller extends BaseController {
         return new Result<Page<#domain.className#>>(ResultCode.OK, page);
     }
 
-
+    @ApiOperation(value = "post分页查询", notes = "支持分页条件和业务条件")
     @PostMapping("/list")
-    public Result<Page<#domain.className#>> find(
+    public Result<Page<#domain.className#>> findWithPage(
        @RequestBody final #domain.className#Req #domain.objName#Req
     ) {
         //-- 设置分页条件 在 #domain.objName#Req 增加属性offset,limit,pageNum

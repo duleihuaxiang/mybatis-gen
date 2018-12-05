@@ -46,7 +46,8 @@
         <table tableName="m_property" domainObjectName="PropertyEntity" enableDeleteByPrimaryKey="true"
                enableDeleteByExample="true">
             <property name="useActualColumnNames" value="false"/>
-            <generatedKey column="property_id" sqlStatement="postgre" identity="true"/>
+            <generatedKey column="property_id" sqlStatement="Mysql" identity="true"/>
+
 
         </table>
     </context>
