@@ -84,7 +84,7 @@ public class #domain.className#ServiceImpl extends BaseServiceImpl implements #d
     public List<#domain.className#> findByQuery(#domain.className#Query query, #domain.className# #domain.objName#) {
         #domain.className#EntityExample example = new #domain.className#EntityExample();
         #domain.className#EntityExample.Criteria criteria = example.createCriteria();
-        //criteria.andStatusEqualTo(Status.NORMAL);
+		criteria.andDeletedEqualTo(0);
         example.setOrderByClause("last_update DESC");
 
         List<#domain.className#Entity> list = this.#domain.objName#EntityMapper.selectByExample(example);
@@ -97,7 +97,7 @@ public class #domain.className#ServiceImpl extends BaseServiceImpl implements #d
 		Page<#domain.className#> page = new Page<#domain.className#>(query);
 		#domain.className#EntityExample example = new #domain.className#EntityExample();
 		#domain.className#EntityExample.Criteria criteria = example.createCriteria();
-		//criteria.andStatusEqualTo(Status.NORMAL);
+		criteria.andDeletedEqualTo(0);
 		example.setOrderByClause("last_update DESC");
 		page.setTotal(Long.valueOf(this.#domain.objName#EntityMapper.countByExample(example)).intValue());
 		if (page.getTotal() > query.getOffset()) {

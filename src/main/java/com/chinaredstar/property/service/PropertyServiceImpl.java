@@ -97,6 +97,7 @@ public class PropertyServiceImpl extends BaseServiceImpl implements PropertyServ
 		Page<Property> page = new Page<Property>(query);
 		PropertyEntityExample example = new PropertyEntityExample();
 		PropertyEntityExample.Criteria criteria = example.createCriteria();
+		criteria.andDeletedEqualTo(0);
 		//criteria.andStatusEqualTo(Status.NORMAL);
 		example.setOrderByClause("last_update DESC");
 		page.setTotal(Long.valueOf(this.propertyEntityMapper.countByExample(example)).intValue());
